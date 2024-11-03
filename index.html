@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="test">
+        
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: "https://testapi-1-68pc.onrender.com/Program", // API endpoint URL
+            type: "GET", // HTTP method (GET, POST, PUT, DELETE)
+            dataType: "json", // Expected data format
+            success: function(response) {
+                var tr = '';
+                console.log(response); // Check the structure in the console
+                
+                // If response is an array, use forEach
+                response.forEach(function(item) {
+                    tr += `<span>${item.name}</span>
+                    <img src="${item.image}" alt="">`; // Adjust `someProperty` to your API data
+                });
+                
+                $('.test').append(tr);
+            },
+            error: function(error) {
+              console.error("Error fetching data:", error); // Handle errors
+            }
+          });
+          
+    });
+</script>
+</html>
